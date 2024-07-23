@@ -12,9 +12,6 @@
  * queue.push(3, 1);
  * queue.length // 3
  * // queue = [[3], [2], [1]]
- * for(const item of queue) {
- *   console.log(item); // 1, 2, 3
- * }
  * while(!queue.isEmpty) {
  *   queue.pop() // 1, 2, 3
  * }

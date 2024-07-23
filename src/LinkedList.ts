@@ -16,7 +16,7 @@ class ListNode<T> {
 /**
  * Linked List
  *
- * A doubly linked list mimicking the interface of JavaScript array
+ * A doubly linked list mimicking the interface of JavaScript arrays
  *
  * ```typescript
  * import { LinkedList } from "@figliolia/data-structures";
