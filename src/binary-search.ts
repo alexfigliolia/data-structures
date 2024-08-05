@@ -9,7 +9,6 @@
  * binarySearch([1, 2, 3, 4], 3) // true
  * binarySearch([1, 2, 3, 4], 5) // false
  *
- * const target = { id: 3, name: "Dave" };
  * binarySearch(
  *   [ // list
  *     { id: 1, name: "Jeff" },
@@ -17,24 +16,30 @@
  *     { id: 3, name: "Dave" },
  *     { id: 4, name: "Alex" },
  *   ],
- *   3, // target
- *   (item => item.id) // extractor
+ *   { id: 3, name: "Dave" }, // target
+ *   item => item.id // extractor
  * ) // true
  * ```
  */
 export function binarySearch(list: number[], target: number): boolean;
 export function binarySearch<T>(
   list: T[],
-  target: number,
+  target: T,
   extractor?: (currentItem: T) => number,
 ): boolean;
 export function binarySearch<T>(
   list: T[],
-  target: number,
+  target: T,
   extractor?: (currentItem: T) => number,
 ) {
   let l = 0;
   let r = list.length - 1;
+  let targetValue: number;
+  if (typeof target === "number") {
+    targetValue = target;
+  } else {
+    targetValue = extractor!(target);
+  }
   while (l <= r) {
     const p = (l + r) >>> 1;
     const mid = list[p];
@@ -44,7 +49,7 @@ export function binarySearch<T>(
     } else {
       comparer = extractor!(mid);
     }
-    const diff = target - comparer;
+    const diff = targetValue - comparer;
     if (diff === 0) {
       return true;
     }

@@ -14,6 +14,7 @@ In this library you'll find a few of the common data-structures I find myself cr
 9. [Priority Queues](#priority-queue)
 10. [Tries](#trie)
 11. [Quick Stack](#quick-stack)
+12. [Binary Search](#binary-search)
 
 All of which are documented and type-safe.
 
@@ -208,4 +209,25 @@ stack.pop() // function two() {}
 stack.pop() // function one() {}
 stack.get(/* ID */) // retrieves an item by ID 0(1)
 stack.delete(/* ID */) // deletes an item by ID 0(1)
+```
+
+### Binary Search
+Logarithmic searching for sorted lists
+
+```typescript
+import { binarySearch } from "@figliolia/data-structures";
+
+binarySearch([1, 2, 3, 4], 3) // true
+binarySearch([1, 2, 3, 4], 5) // false
+
+binarySearch(
+   [
+     { id: 1, name: "Jeff" },
+     { id: 2, name: "Steve" },
+     { id: 3, name: "Dave" },
+     { id: 4, name: "Alex" },
+   ],
+   { id: 3, name: "Dave" },
+   item => item.id
+) // true
 ```

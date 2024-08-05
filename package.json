@@ -1,6 +1,6 @@
 {
   "name": "@figliolia/data-structures",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Efficient data structures for every day programming",
   "author": "Alex Figliolia",
   "scripts": {
@@ -24,7 +24,8 @@
     "priority queue",
     "queue",
     "stack",
-    "trie"
+    "trie",
+    "binary-search"
   ],
   "license": "MIT",
   "homepage": "https://github.com/alexfigliolia/data-structures#readme",
