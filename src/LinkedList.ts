@@ -52,19 +52,7 @@ export class LinkedList<T> {
       this.tail = node;
       return this.size;
     }
-    if (!this.head) {
-      throw new Error("Missing head");
-    }
-    if (this.head === this.tail) {
-      this.head.next = node;
-      this.tail = node;
-      this.tail.previous = this.head;
-      return this.size;
-    }
-    if (!this.tail) {
-      throw new Error("Missing tail");
-    }
-    this.tail.next = node;
+    this.tail!.next = node;
     node.previous = this.tail;
     this.tail = node;
     return this.size;
@@ -73,20 +61,15 @@ export class LinkedList<T> {
   public unshift(item: T) {
     this.size++;
     const node = new ListNode(item);
-    if (!this.head) {
+    if (!this.head && !this.tail) {
       this.head = node;
       this.tail = node;
       return this.size;
     }
-    if (this.head === this.tail) {
-      this.tail.previous = node;
-      node.next = this.tail;
-      this.head = node;
-      return this.size;
-    }
-    this.head.previous = node;
+    this.head!.previous = node;
     node.next = this.head;
     this.head = node;
+    return this.size;
   }
 
   public shift() {
