@@ -1,6 +1,6 @@
 {
   "name": "@figliolia/data-structures",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Efficient data structures for every day programming",
   "author": "Alex Figliolia",
   "scripts": {
@@ -20,6 +20,7 @@
     "max stack",
     "min heap",
     "min stack",
+    "quick stack",
     "priority queue",
     "queue",
     "stack",
@@ -31,7 +32,9 @@
     "type": "git",
     "url": "git+https://github.com/alexfigliolia/data-structures.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@figliolia/event-emitter": "^1.1.4"
+  },
   "devDependencies": {
     "@figliolia/child-process": "^1.0.1",
     "@figliolia/ts-packager": "^1.0.9",

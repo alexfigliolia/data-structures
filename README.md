@@ -13,6 +13,7 @@ In this library you'll find a few of the common data-structures I find myself cr
 8. [Doubly Linked Lists](#linked-list)
 9. [Priority Queues](#priority-queue)
 10. [Tries](#trie)
+11. [Quick Stack](#quick-stack)
 
 All of which are documented and type-safe.
 
@@ -192,4 +193,19 @@ dictionary.add("goodbye");
 dictionary.add("helpful");
 dictionary.search("hello"); // true
 dictionary.search("help", false); // true
+```
+
+### Quick Stack
+A stack-like structure supporting O(1) indexing, retrieval, and deletion
+
+```typescript
+import { QuickStack } from "@figliolia/data-structures";
+
+const stack = new QuickStack<() => void>();
+const ID1 = stack.push(function one() {});
+const ID2 = stack.push(function two() {});
+stack.pop() // function two() {}
+stack.pop() // function one() {}
+stack.get(/* ID */) // retrieves an item by ID 0(1)
+stack.delete(/* ID */) // deletes an item by ID 0(1)
 ```
