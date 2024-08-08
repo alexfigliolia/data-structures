@@ -68,5 +68,11 @@ export abstract class QuickList<T> {
     return this.storage.clear();
   }
 
+  *[Symbol.iterator]() {
+    for (const [_, value] of this.storage) {
+      yield value;
+    }
+  }
+
   public abstract peek(): [ID: string, item: T] | undefined;
 }
