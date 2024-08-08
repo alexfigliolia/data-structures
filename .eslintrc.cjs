@@ -5,7 +5,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  ignorePatterns: ["node_modules", "build", "coverage"],
+  ignorePatterns: ["node_modules", "dist", "coverage"],
   extends: [
     "eslint:recommended",
     "plugin:import/recommended",
