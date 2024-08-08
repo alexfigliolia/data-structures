@@ -1,6 +1,6 @@
 {
   "name": "@figliolia/data-structures",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Efficient data structures for every day programming",
   "author": "Alex Figliolia",
   "scripts": {

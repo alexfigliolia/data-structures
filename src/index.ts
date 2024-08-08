@@ -8,5 +8,6 @@ export * from "./MinStack";
 export * from "./MaxStack";
 export * from "./LinkedList";
 export * from "./QuickStack";
+export * from "./QuickQueue";
 export * from "./PriorityQueue";
 export * from "./binary-search";

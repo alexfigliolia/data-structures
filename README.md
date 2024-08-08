@@ -14,6 +14,7 @@ In this library you'll find a few of the common data-structures I find myself cr
 9. [Priority Queues](#priority-queue)
 10. [Tries](#trie)
 11. [Quick Stack](#quick-stack)
+11. [Quick Queue](#quick-queue)
 12. [Binary Search](#binary-search)
 
 All of which are documented and type-safe.
@@ -197,7 +198,7 @@ dictionary.search("help", false); // true
 ```
 
 ### Quick Stack
-A stack-like structure supporting O(1) indexing, retrieval, and deletion
+A wrapper around the native JavaScript Map that assigns an auto-incrementing ID to each value added. It provides a stack-like interface with the ability to access and remove items in 0(1) time
 
 ```typescript
 import { QuickStack } from "@figliolia/data-structures";
@@ -209,6 +210,21 @@ stack.pop() // function two() {}
 stack.pop() // function one() {}
 stack.get(/* ID */) // retrieves an item by ID 0(1)
 stack.delete(/* ID */) // deletes an item by ID 0(1)
+```
+
+### Quick Queue
+A wrapper around the native JavaScript Map that assigns an auto-incrementing ID to each value added. It provides a queue-like interface with the ability to access and remove items in 0(1) time
+
+```typescript
+import { QuickStack } from "@figliolia/data-structures";
+
+const queue = new QuickStack<() => void>();
+const ID1 = queue.enqueue(function one() {});
+const ID2 = queue.enqueue(function two() {});
+queue.dequeue() // function one() {}
+queue.dequeue() // function two() {}
+queue.get(/* ID */) // retrieves an item by ID 0(1)
+queue.delete(/* ID */) // deletes an item by ID 0(1)
 ```
 
 ### Binary Search

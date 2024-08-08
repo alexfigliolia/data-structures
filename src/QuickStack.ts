@@ -1,58 +1,27 @@
-import { AutoIncrementingID } from "@figliolia/event-emitter";
+import { QuickList } from "./QuickList";
 
 /**
  * Quick Stack
  *
- * A stack-like structure supporting O(1) indexing and
- * retrievals
+ * A wrapper around the native Map that assigns an
+ * auto-incrementing ID to each value added. It provides
+ * a Stack-like interface with the ability to access and
+ * remove items in 0(1) time
  *
  * ```typescript
  * const stack = new QuickStack<() => void>();
  * const uniqueID = stack.push(() => {});
  *
- * const FN = stack.pop() // Remove and return the last entry on the stack
+ * const FN = stack.pop() // Remove and return the first item on the stack
  * const FN = stack.get(uniqueID); // Get an entry by ID
  * stack.delete(uniqueID) // Delete an entry by ID
  * ```
  */
-export class QuickStack<T> {
-  public storage = new Map<string, T>();
-  private IDs = new AutoIncrementingID();
-
-  /**
-   * Push
-   *
-   * Adds a new item onto the stack, returns a unique
-   * ID for the item
-   */
-  public push(item: T) {
-    const ID = this.IDs.get();
-    this.storage.set(ID, item);
-    return ID;
-  }
-
-  /**
-   * Length
-   *
-   * Returns the total number of items on the stack
-   */
-  public get length() {
-    return this.storage.size;
-  }
-
-  /**
-   * Get
-   *
-   * Returns an item on the stack by unique ID
-   */
-  public get(ID: string) {
-    return this.storage.get(ID);
-  }
-
+export class QuickStack<T> extends QuickList<T> {
   /**
    * Pop
    *
-   * Removes and returns the last entry int he stack
+   * Removes and returns the top entry in the stack
    */
   public pop() {
     const last = Array.from(this.storage.keys()).pop();
@@ -65,11 +34,15 @@ export class QuickStack<T> {
   }
 
   /**
-   * Delete
+   * Peek
    *
-   * Removes an entry from the stack by unique ID
+   * Returns the top entry in the stack
    */
-  public delete(ID: string) {
-    return this.storage.delete(ID);
+  public peek(): [ID: string, item: T] | undefined {
+    const last = Array.from(this.storage.keys()).pop();
+    if (!last) {
+      return;
+    }
+    return [last, this.storage.get(last) as T];
   }
 }
