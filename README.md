@@ -216,9 +216,9 @@ stack.delete(/* ID */) // deletes an item by ID 0(1)
 A wrapper around the native JavaScript Map that assigns an auto-incrementing ID to each value added. It provides a queue-like interface with the ability to access and remove items in 0(1) time
 
 ```typescript
-import { QuickStack } from "@figliolia/data-structures";
+import { QuickQueue } from "@figliolia/data-structures";
 
-const queue = new QuickStack<() => void>();
+const queue = new QuickQueue<() => void>();
 const ID1 = queue.enqueue(function one() {});
 const ID2 = queue.enqueue(function two() {});
 queue.dequeue() // function one() {}
