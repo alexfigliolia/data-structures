@@ -13,7 +13,7 @@
  * queue.length // 3
  * // queue = [[3], [2], [1]]
  * while(!queue.isEmpty) {
- *   queue.pop() // 1, 2, 3
+ *   queue.pop() // 3, 2, 1
  * }
  * ```
  */
@@ -50,8 +50,8 @@ export class PriorityQueue<T> {
       const item = bucket.pop();
       if (!bucket.length) {
         delete this.priorities[p];
-        return item;
       }
+      return item;
     }
   }
 
@@ -94,7 +94,7 @@ export class PriorityQueue<T> {
   *[Symbol.iterator](): Generator<[priority: number, bucket: T[]]> {
     const keys = Object.keys(this.priorities);
     const { length } = keys;
-    for (let i = length - 1; i > -1; i--) {
+    for (let i = 0; i < length; i++) {
       const key = parseInt(keys[i]);
       const bucket = this.buckets[key];
       if (bucket && bucket.length) {
