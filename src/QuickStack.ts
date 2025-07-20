@@ -42,6 +42,14 @@ export class QuickStack<T> extends QuickList<T> {
     });
   }
 
+  *[Symbol.iterator]() {
+    const items = Array.from(this.storage.values());
+    const { length } = items;
+    for (let i = length - 1; i > -1; i--) {
+      yield items[i];
+    }
+  }
+
   private withTop<U>(fn: (ID: string) => U) {
     const top = Array.from(this.storage.keys()).pop();
     if (top) {
