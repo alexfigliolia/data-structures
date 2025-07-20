@@ -24,13 +24,11 @@ export class QuickStack<T> extends QuickList<T> {
    * Removes and returns the top entry in the stack
    */
   public pop() {
-    const last = Array.from(this.storage.keys()).pop();
-    if (!last) {
-      return;
-    }
-    const item = this.storage.get(last);
-    this.delete(last);
-    return item;
+    return this.withTop(ID => {
+      const item = this.storage.get(ID);
+      this.delete(ID);
+      return item;
+    });
   }
 
   /**
@@ -39,10 +37,15 @@ export class QuickStack<T> extends QuickList<T> {
    * Returns the top entry in the stack
    */
   public peek(): [ID: string, item: T] | undefined {
-    const last = Array.from(this.storage.keys()).pop();
-    if (!last) {
-      return;
+    return this.withTop(ID => {
+      return [ID, this.storage.get(ID) as T] as const;
+    });
+  }
+
+  private withTop<U>(fn: (ID: string) => U) {
+    const top = Array.from(this.storage.keys()).pop();
+    if (top) {
+      return fn(top);
     }
-    return [last, this.storage.get(last) as T];
   }
 }
